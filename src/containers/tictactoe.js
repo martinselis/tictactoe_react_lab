@@ -41,43 +41,30 @@ class TicTacToe extends Component {
   }
 
   checkGameWon() {
-    const tiles = this.state.tiles;
-    console.log(tiles)
-    if (tiles[0].img && tiles[1].img && tiles[2].img === ("/images/X.png")) {
-      console.log('game won0')
-    } else if(tiles[0].img && tiles[1].img && tiles[2].img === ("/images/O.png")) {
-      console.log('game won 1')
-    } else if(tiles[3].img && tiles[4].img && tiles[5].img === ("/images/X.png")) {
-        console.log('game won 2')
-    } else if(tiles[3].img && tiles[4].img && tiles[5].img === ("/images/O.png")) {
-      console.log('game won 2')
-    } else if(tiles[6].img && tiles[7].img && tiles[8].img === ("/images/X.png")) {
-      console.log('game won')
-    } else if (tiles[6].img && tiles[7].img && tiles[8].img === ("/images/O.png")) {
-        console.log('game won')
-    } else if (tiles[0].img && tiles[3].img && tiles[6].img === ("/images/X.png")) {
-      console.log('game won')
-    } else if (tiles[0].img && tiles[3].img && tiles[6].img === ("/images/O.png")) {
-      console.log('game won3')
-    } else if(tiles[1].img && tiles[4].img && tiles[7].img === ("/images/X.png")) {
-      console.log('won')
-    } else if (tiles[1].img && tiles[4].img && tiles[7].img === ("/images/O.png")) {
-      console.log('game won4')
-    } else if(tiles[2].img && tiles[5].img && tiles[8].img === ("/images/X.png")) {
-      console.log('game won')
-    } else if (tiles[2].img && tiles[5].img && tiles[8].img === ("/images/O.png")) {
-      console.log('game won5')
-    } else if (tiles[0].img && tiles[4].img && tiles[8].img === ("/images/X.png")) {
-      console.log('won')
-    } else if(tiles[0].img && tiles[4].img && tiles[8].img === ("/images/O.png")) {
-      console.log('game won6')
-    } else if(tiles[2].img && tiles[4].img && tiles[6].img === ("/images/X.png")) {
-      console.log('game won')
-    } else if (tiles[2].img && tiles[4].img && tiles[6].img === ("/images/O.png")) {
-      console.log('game won7')
+    const combos = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6]
+    ]
+
+    for (const combo of combos) {
+      this.runThroughCombo(combo)
     }
   }
 
+  runThroughCombo([a, b, c]) {
+    const tiles = this.state.tiles;
+    if ((tiles[a].img === ("/images/X.png")) && (tiles[b].img === ("/images/X.png")) && (tiles[c].img === ("/images/X.png"))) {
+        console.log('X has won')
+    } else if((tiles[a].img === ("/images/O.png")) && (tiles[b].img === ("/images/O.png")) && (tiles[c].img === ("/images/O.png"))) {
+        console.log('O has won')
+      }
+    }
   getCorrectImage() {
     // const img = ["https://image.shutterstock.com/image-vector/cross-sign-element-red-x-260nw-567030823.jpg",
     // "http://pluspng.com/img-png/circle-png-circle-png-hd-1600.png"];
